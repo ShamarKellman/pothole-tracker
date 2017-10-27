@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="closeModal()">Cancel</button>
+    </ion-buttons>
+    <ion-title>Add Pothole</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <p>Location you pinned.</p>
+    <div>
+      <p>
+        <strong>Latitude: </strong>{{ location.lat }}</p>
+      <p>
+        <strong>Longitude: </strong>{{ location.lng }}</p>
+    </div>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Severity</ion-label>
+    <ion-select [(ngModel)]="severity" interface="popover">
+      <ion-option value="minor">Minor</ion-option>
+      <ion-option value="major">Major</ion-option>
+      <ion-option value="extreme">Extreme</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <button ion-button block full (click)="savePothole()">Add</button>
+  </ion-item>
+</ion-content>

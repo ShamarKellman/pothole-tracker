@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="closeModal()">Cancel</button>
+    </ion-buttons>
+    <ion-title>Add Pothole</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <p>Location you pinned.</p>
+    <div>
+      <p>
+        <strong>Latitude: </strong>{{ pothole.coordinates.latitude }}</p>
+      <p>
+        <strong>Longitude: </strong>{{ pothole.coordinates.longitude }}</p>
+    </div>
+  </ion-item>
+  <ion-item>
+    <ion-label>Is this pothole patched?</ion-label>
+    <ion-checkbox [checked]="pothole.patched" (ionChange)="onPatchedChanged($event)"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label>Verify this pothole!</ion-label>
+    <ion-checkbox [checked]="pothole.verified" (ionChange)="onVerifiedChanged($event)"></ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-label>Severity</ion-label>
+    <ion-select [(ngModel)]="pothole.severity" interface="popover">
+      <ion-option value="minor">Minor</ion-option>
+      <ion-option value="major">Major</ion-option>
+      <ion-option value="extreme">Extreme</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <button ion-button block full (click)="savePothole()">Update</button>
+  </ion-item>
+</ion-content>
